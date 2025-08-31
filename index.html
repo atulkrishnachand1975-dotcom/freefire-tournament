@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Free Fire Tournament Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .landing {
+      background: url('https://i.imgur.com/3Y3Y3Y3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 1s ease-in-out;
+    }
+
+    .register-btn {
+      padding: 20px 40px;
+      font-size: 24px;
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .form-section {
+      display: none;
+      background: url('https://i.imgur.com/9Z9Z9Z9.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      padding: 40px;
+      box-sizing: border-box;
+      color: #fff;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .form-box {
+      background: rgba(0, 0, 0, 0.7);
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ffcc00;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #222;
+      color: #fff;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .confirmation {
+      display: none;
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .checkmark {
+      font-size: 60px;
+      color: #00ff00;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="landing" id="landing">
+    <button class="register-btn" onclick="showForm()">Join Tournament</button>
+  </div>
+
+  <div class="form-section" id="formSection">
+    <div class="form-box">
+      <h2>Free Fire Tournament Registration</h2>
+      <form onsubmit="sendToWhatsApp(); return false;">
+        <label>Name</label>
+        <input type="text" id="name" required>
+
+        <label>Age</label>
+        <input type="number" id="age" required>
+
+        <label>Free Fire UID</label>
+        <input type="text" id="uid" required>
+
+        <label>In-Game ID Name</label>
+        <input type="text" id="gameid" required>
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" required>
+
+        <label>Account Level</label>
+        <input type="number" id="level" required>
+
+        <button class="submit-btn" type="submit">Send Registration Request</button>
+      </form>
+      <div class="confirmation" id="confirmation">
+        <div class="checkmark">✅</div>
+        <p>Registration Request Completed</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showForm() {
+      document.getElementById("landing").style.display = "none";
+      document.getElementById("formSection").style.display = "block";
+    }
+
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const uid = document.getElementById("uid").value;
+      const gameid = document.getElementById("gameid").value;
+      const phone = document.getElementById("phone").value;
+      const level = document.getElementById("level").value;
+
+      const message = 🔥 Free Fire Tournament Registration 🔥\n\n👤 Name: ${name}\n🎂 Age: ${age}\n🆔 UID: ${uid}\n🎮 Game ID: ${gameid}\n📱 Phone: ${phone}\n⚡ Level: ${level};
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappNumber = "919453242943";
+      const url = https://wa.me/${whatsappNumber}?text=${encodedMessage};
+
+      window.open(url, "_blank");
+
+      document.getElementById("confirmation").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
